@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquiry Leads - Admin Panel | Bhanja College of Nursing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body data-page="leads">
+  <div class="admin-layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header"><i class="fas fa-staff-snake sidebar-logo"></i><div><span class="sidebar-title">BCN Admin</span><span class="sidebar-sub">CMS Panel</span></div></div>
+      <nav class="sidebar-nav">
+        <a href="dashboard.html" class="sidebar-link"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+        <a href="notices.html" class="sidebar-link"><i class="fas fa-bullhorn"></i> Notices</a>
+        <a href="gallery.html" class="sidebar-link"><i class="fas fa-images"></i> Gallery</a>
+        <a href="leads.html" class="sidebar-link active"><i class="fas fa-users"></i> Enquiry Leads</a>
+        <div class="sidebar-divider"></div>
+        <a href="../index.html" class="sidebar-link"><i class="fas fa-arrow-left"></i> Back to Site</a>
+        <a href="#" class="sidebar-link btn-logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+      </nav>
+    </aside>
+    <div class="admin-main">
+      <header class="admin-topbar">
+        <button class="sidebar-toggle" id="sidebarToggle"><i class="fas fa-bars"></i></button>
+        <h2>Admission Enquiry Leads</h2>
+        <div class="topbar-right">
+          <button class="btn-admin-primary" id="exportCsvBtn"><i class="fas fa-file-csv"></i> Export CSV</button>
+          <button class="btn-admin-secondary" id="exportXlsBtn"><i class="fas fa-file-excel"></i> Excel</button>
+        </div>
+      </header>
+      <div class="admin-content">
+        <!-- Filters -->
+        <div class="filter-bar">
+          <div class="filter-search"><i class="fas fa-search"></i><input type="text" class="filter-input" id="leadSearch" placeholder="Search by name, email, phone..."></div>
+          <div class="filter-dates">
+            <label>From: <input type="date" class="filter-date" id="dateFrom"></label>
+            <label>To: <input type="date" class="filter-date" id="dateTo"></label>
+          </div>
+          <span class="filter-count"><span id="leadCount">0</span> results</span>
+        </div>
+        <div class="table-container" style="overflow-x:auto;">
+          <table class="admin-table data-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th class="sortable" data-col="name">Name ↕</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th class="sortable" data-col="course">Course ↕</th>
+                <th class="sortable" data-col="physics">P%</th>
+                <th class="sortable" data-col="chemistry">C%</th>
+                <th class="sortable" data-col="biology">B%</th>
+                <th>Address</th>
+                <th class="sortable" data-col="date">Date ↕</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="leadsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lead Detail Modal -->
+  <div class="admin-modal-overlay" id="leadDetailModal">
+    <div class="admin-modal">
+      <div class="admin-modal-header"><h3>Lead Details</h3><button class="admin-modal-close modal-close">&times;</button></div>
+      <div class="lead-detail" style="padding:24px;"></div>
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div class="admin-modal-overlay" id="confirmModal">
+    <div class="admin-modal" style="max-width:400px;text-align:center;">
+      <div class="admin-modal-header"><h3>Confirm</h3><button class="admin-modal-close modal-close">&times;</button></div>
+      <p class="confirm-msg" style="padding:20px;color:#6C757D;">Are you sure?</p>
+      <div class="form-actions-admin" style="padding:0 24px 24px;">
+        <button class="btn-admin-secondary btn-confirm-no">Cancel</button>
+        <button class="btn-admin-danger btn-confirm-yes">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

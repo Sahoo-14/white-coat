@@ -1,0 +1,569 @@
+/* ============================================================
+   BHANJA COLLEGE OF NURSING — Animations
+   animations.css — Keyframes, Scroll Animations, Transitions
+   ============================================================ */
+
+/* ── Smooth Scroll ────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── Fade Animations ──────────────────────────────────────── */
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInUpBig {
+  0% {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Slide Animations (Hero Slider) ───────────────────────── */
+@keyframes slideInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutRight {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@keyframes slideOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}
+
+/* ── Ticker / Marquee Animation ───────────────────────────── */
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── Pulse Animation ──────────────────────────────────────── */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes pulseSoft {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+/* ── Glow Animation (Admission Button) ────────────────────── */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.4),
+                0 0 16px rgba(201, 168, 76, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(201, 168, 76, 0.6),
+                0 0 32px rgba(201, 168, 76, 0.35),
+                0 0 48px rgba(201, 168, 76, 0.15);
+  }
+}
+
+/* ── New Badge Pulse ──────────────────────────────────────── */
+@keyframes newBadgePulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(0.95);
+  }
+}
+
+/* ── Counter Up (Stats) ───────────────────────────────────── */
+@keyframes counterUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Float Animation (Decorative) ─────────────────────────── */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+  66% {
+    transform: translateY(-4px) rotate(-1deg);
+  }
+}
+
+/* ── Shimmer / Loading Placeholder ────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-loading {
+  background: linear-gradient(
+    90deg,
+    var(--light-gray) 25%,
+    #f0f0f0 37%,
+    var(--light-gray) 63%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ── Spin Animation ───────────────────────────────────────── */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Bounce Animation ─────────────────────────────────────── */
+@keyframes bounce {
+  0%, 20%, 53%, 80%, 100% {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    transform: translateY(0);
+  }
+  40%, 43% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translateY(-20px);
+  }
+  70% {
+    animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+    transform: translateY(-10px);
+  }
+  90% {
+    transform: translateY(-4px);
+  }
+}
+
+/* ── Scale In Animation ───────────────────────────────────── */
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleUp {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* ── Ripple Effect ────────────────────────────────────────── */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* ── Underline Grow ───────────────────────────────────────── */
+@keyframes underlineGrow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ── Rotate In ────────────────────────────────────────────── */
+@keyframes rotateIn {
+  0% {
+    opacity: 0;
+    transform: rotate(-10deg) scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* ── Slide Up (for modals, drawers) ───────────────────────── */
+@keyframes slideUp {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Width Expand (for progress bars, underlines) ─────────── */
+@keyframes widthExpand {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   Scroll-Triggered Animation Classes
+   ============================================================ */
+
+/* Base class — hidden by default, animated when in view */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-scroll.animated {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Direction variants */
+.animate-on-scroll.from-left {
+  transform: translateX(-30px);
+}
+.animate-on-scroll.from-left.animated {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.from-right {
+  transform: translateX(30px);
+}
+.animate-on-scroll.from-right.animated {
+  transform: translateX(0);
+}
+
+.animate-on-scroll.from-bottom {
+  transform: translateY(30px);
+}
+.animate-on-scroll.from-bottom.animated {
+  transform: translateY(0);
+}
+
+.animate-on-scroll.scale-in {
+  transform: scale(0.9);
+}
+.animate-on-scroll.scale-in.animated {
+  transform: scale(1);
+}
+
+/* Staggered delays for child elements */
+.animate-on-scroll.delay-1 { transition-delay: 0.1s; }
+.animate-on-scroll.delay-2 { transition-delay: 0.2s; }
+.animate-on-scroll.delay-3 { transition-delay: 0.3s; }
+.animate-on-scroll.delay-4 { transition-delay: 0.4s; }
+.animate-on-scroll.delay-5 { transition-delay: 0.5s; }
+.animate-on-scroll.delay-6 { transition-delay: 0.6s; }
+
+/* ============================================================
+   Animation Utility Classes
+   ============================================================ */
+
+.anim-fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.anim-fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.anim-fade-in-down {
+  animation: fadeInDown 0.6s ease forwards;
+}
+
+.anim-fade-in-left {
+  animation: fadeInLeft 0.6s ease forwards;
+}
+
+.anim-fade-in-right {
+  animation: fadeInRight 0.6s ease forwards;
+}
+
+.anim-scale-in {
+  animation: scaleIn 0.4s ease forwards;
+}
+
+.anim-bounce {
+  animation: bounce 1s ease;
+}
+
+.anim-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.anim-float-slow {
+  animation: floatSlow 4s ease-in-out infinite;
+}
+
+.anim-pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.anim-spin {
+  animation: spin 1s linear infinite;
+}
+
+/* ============================================================
+   Hover Transitions for Interactive Elements
+   ============================================================ */
+
+/* Generic interactive hover lift */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Subtle shadow grow */
+.hover-shadow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* Scale on hover */
+.hover-scale {
+  transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+  transform: scale(1.03);
+}
+
+/* Image zoom on hover (used inside overflow-hidden containers) */
+.hover-zoom {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-zoom:hover {
+  transform: scale(1.08);
+}
+
+/* Underline on hover */
+.hover-underline {
+  position: relative;
+}
+
+.hover-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-underline:hover::after {
+  width: 100%;
+}
+
+/* Color shift on hover */
+.hover-gold:hover {
+  color: var(--accent) !important;
+}
+
+.hover-teal:hover {
+  color: var(--teal) !important;
+}
+
+/* Background fill on hover */
+.hover-bg-primary:hover {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.hover-bg-accent:hover {
+  background-color: var(--accent);
+  color: var(--dark);
+}
+
+/* Brightness on hover */
+.hover-bright:hover {
+  filter: brightness(1.1);
+}
+
+/* ============================================================
+   Page Transition (optional)
+   ============================================================ */
+.page-transition-enter {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* Loading spinner */
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--light-gray);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+.loading-spinner-sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+.loading-spinner-lg {
+  width: 60px;
+  height: 60px;
+  border-width: 4px;
+}

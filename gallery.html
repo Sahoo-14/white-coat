@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Photo Gallery - Bhanja College of Nursing | Campus, Labs, Events</title>
+  <meta name="description" content="Browse photos of Bhanja College of Nursing campus, laboratories, clinical postings, and cultural events in Bhanjanagar, Odisha.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-bar"><div class="container"><div class="top-bar-left"><a href="tel:+916812345678"><i class="fas fa-phone-alt"></i> +91 681 234 5678</a><a href="mailto:info@bhanjanursing.ac.in"><i class="fas fa-envelope"></i> info@bhanjanursing.ac.in</a></div><div class="top-bar-right"><a href="admission.html" class="admission-btn"><i class="fas fa-graduation-cap"></i> Admission Open 2026-27</a></div></div></div>
+
+  <nav class="navbar" id="navbar"><div class="container"><a href="index.html" class="nav-brand"><i class="fas fa-staff-snake nav-logo-icon"></i><div class="nav-brand-text"><span class="brand-name">Bhanja College of Nursing</span><span class="brand-tagline">Bhanjanagar, Ganjam, Odisha</span></div></a><button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button><ul class="nav-links" id="navLinks"><li><a href="index.html" class="nav-link">Home</a></li><li class="dropdown"><a href="about.html" class="nav-link">About Us <i class="fas fa-chevron-down"></i></a><ul class="dropdown-menu"><li><a href="about.html">Our History</a></li><li><a href="about.html#vision-mission">Vision & Mission</a></li><li><a href="principal-message.html">Principal's Message</a></li><li><a href="affiliations.html">Affiliations & Approvals</a></li></ul></li><li><a href="courses.html" class="nav-link">Courses Offered</a></li><li><a href="facilities.html" class="nav-link">Facilities</a></li><li><a href="gallery.html" class="nav-link active">Gallery</a></li><li><a href="contact.html" class="nav-link">Contact Us</a></li><li><a href="admission.html" class="nav-link btn btn-gold nav-cta">Apply Now</a></li></ul></div></nav>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h1>Photo Gallery</h1>
+        <p>A visual journey through our campus, labs, clinical postings, and cultural events</p>
+        <ul class="breadcrumb"><li><a href="index.html">Home</a></li><li><span class="current">Gallery</span></li></ul>
+      </div>
+    </section>
+
+    <section class="section-padding">
+      <div class="container">
+        <!-- Gallery Tabs -->
+        <div class="gallery-tabs" id="galleryTabs">
+          <button class="gallery-tab active" data-category="all">All Photos</button>
+          <button class="gallery-tab" data-category="campus">Campus</button>
+          <button class="gallery-tab" data-category="labs">Laboratories</button>
+          <button class="gallery-tab" data-category="clinical">Clinical Postings</button>
+          <button class="gallery-tab" data-category="events">Cultural Events</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Populated by JS from data.js -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Overlay -->
+  <div class="lightbox-overlay" id="lightboxOverlay">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">&times;</button>
+    <button class="lightbox-prev" id="lightboxPrev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+    <button class="lightbox-next" id="lightboxNext" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-caption" id="lightboxCaption"></div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-col"><h4 class="footer-heading">Bhanja College of Nursing</h4><p>Established with a vision to provide quality nursing education in the Ganjam district of Odisha, nurturing compassionate healthcare professionals since inception.</p><div class="footer-social"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-whatsapp"></i></a></div></div><div class="footer-col"><h4 class="footer-heading">Quick Links</h4><ul><li><a href="about.html" class="footer-link">About Us</a></li><li><a href="courses.html" class="footer-link">Courses</a></li><li><a href="facilities.html" class="footer-link">Facilities</a></li><li><a href="gallery.html" class="footer-link">Gallery</a></li><li><a href="admission.html" class="footer-link">Admission</a></li><li><a href="contact.html" class="footer-link">Contact</a></li></ul></div><div class="footer-col"><h4 class="footer-heading">Our Courses</h4><ul><li><a href="courses.html#bsc" class="footer-link">B.Sc. Nursing (4 Years)</a></li><li><a href="courses.html#gnm" class="footer-link">GNM (3.5 Years)</a></li><li><a href="courses.html#anm" class="footer-link">ANM (2 Years)</a></li></ul><h4 class="footer-heading mt-3">Approved By</h4><ul><li><a href="affiliations.html" class="footer-link">Indian Nursing Council</a></li><li><a href="affiliations.html" class="footer-link">ONMC, Odisha</a></li><li><a href="affiliations.html" class="footer-link">OUHS, Bhubaneswar</a></li></ul></div><div class="footer-col"><h4 class="footer-heading">Contact Info</h4><ul class="footer-contact"><li><i class="fas fa-map-marker-alt"></i> Bhanjanagar, Ganjam District, Odisha - 761126</li><li><i class="fas fa-phone-alt"></i> +91 681 234 5678</li><li><i class="fas fa-envelope"></i> info@bhanjanursing.ac.in</li><li><i class="fas fa-clock"></i> Mon - Sat: 9:00 AM - 5:00 PM</li></ul></div></div><div class="footer-bottom"><p>&copy; 2026 Bhanja College of Nursing, Bhanjanagar. All Rights Reserved.</p><p>Approved by INC, New Delhi | Affiliated to OUHS, Bhubaneswar | Recognized by ONMC, Odisha</p></div></div></footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top"><i class="fas fa-chevron-up"></i></button>
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/gallery.js"></script>
+</body>
+</html>

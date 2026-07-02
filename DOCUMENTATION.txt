@@ -1,0 +1,850 @@
+================================================================================
+                    BHANJA COLLEGE OF NURSING - OFFICIAL WEBSITE
+                         PROJECT DOCUMENTATION & USER GUIDE
+================================================================================
+
+Document Version : 1.0
+Created Date     : June 11, 2026
+Project Type     : Institutional Website with CMS Admin Panel
+Institution      : Bhanja College of Nursing, Bhanjanagar, Ganjam, Odisha, India
+Courses Offered  : B.Sc. Nursing, GNM (General Nursing & Midwifery), ANM (Auxiliary Nurse Midwifery)
+
+================================================================================
+                           TABLE OF CONTENTS
+================================================================================
+
+  1.  PROJECT OVERVIEW
+  2.  TECHNOLOGY STACK
+  3.  FILE STRUCTURE & ORGANIZATION
+  4.  DESIGN SYSTEM REFERENCE
+  5.  PAGE-BY-PAGE FEATURE DOCUMENTATION
+  6.  ADMIN PANEL (CMS) USER GUIDE
+  7.  DATA STORAGE & MANAGEMENT
+  8.  RESPONSIVE DESIGN BREAKPOINTS
+  9.  SEO IMPLEMENTATION
+  10. DEPLOYMENT INSTRUCTIONS
+  11. MAINTENANCE GUIDE
+  12. SECURITY CONSIDERATIONS
+  13. BROWSER COMPATIBILITY
+  14. FUTURE ENHANCEMENT ROADMAP
+  15. TROUBLESHOOTING
+
+================================================================================
+  1. PROJECT OVERVIEW
+================================================================================
+
+This project delivers a complete, modern, and mobile-responsive website for 
+Bhanja College of Nursing located in Bhanjanagar, Ganjam District, Odisha, India.
+
+PURPOSE:
+- Provide information to prospective students and parents about nursing courses
+- Showcase campus infrastructure, facilities, and academic programs
+- Capture admission enquiries through an integrated lead form
+- Enable administrative staff to manage notices, gallery, and leads via CMS
+- Ensure regulatory compliance visibility (INC, ONMC, OUHS approvals)
+
+TARGET AUDIENCE:
+- Prospective students seeking nursing education (10+2 pass)
+- Parents and guardians evaluating nursing colleges
+- Current students accessing notices and updates
+- Administrative staff managing content through the admin panel
+- Regulatory bodies verifying institutional information
+
+KEY FEATURES:
+- Dynamic hero image slider with auto-advance
+- Horizontal announcement ticker for urgent notices
+- Interactive notice board with "NEW" badge animations
+- Course information with tabbed interface (ANM, GNM, B.Sc. Nursing)
+- Photo gallery with category filters and lightbox viewer
+- Admission enquiry form with real-time validation
+- Contact form with Google Maps integration
+- Complete CMS admin panel at /admin
+- Fully responsive design (mobile, tablet, desktop)
+- Scroll-triggered animations for engaging user experience
+
+================================================================================
+  2. TECHNOLOGY STACK
+================================================================================
+
+FRONTEND:
+  - HTML5 (semantic markup with accessibility considerations)
+  - CSS3 (custom properties, flexbox, CSS grid, keyframe animations)
+  - JavaScript ES6+ (vanilla, no frameworks or jQuery)
+  - Font Awesome 6.5.1 (icon library via CDN)
+  - Google Fonts (Inter for body, Playfair Display for headings)
+
+STYLING APPROACH:
+  - Vanilla CSS with CSS Custom Properties (design tokens)
+  - No CSS frameworks (Bootstrap/Tailwind not used)
+  - Modular CSS architecture (4 separate files)
+  - Mobile-first responsive design
+
+DATA STORAGE:
+  - localStorage (browser-based, persistent across sessions)
+  - sessionStorage (admin authentication, cleared on tab close)
+  - No server-side database required for demo operation
+
+EXTERNAL DEPENDENCIES (CDN):
+  - Font Awesome 6.5.1: https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css
+  - Google Fonts: Inter (300-700), Playfair Display (400-700)
+
+================================================================================
+  3. FILE STRUCTURE & ORGANIZATION
+================================================================================
+
+Nursing College/
+│
+├── index.html                 [Homepage - hero slider, notices, courses]
+├── about.html                 [Institutional history, vision & mission]
+├── principal-message.html     [Principal's welcome message]
+├── courses.html               [Course details - ANM, GNM, B.Sc. Nursing]
+├── facilities.html            [Campus facilities & infrastructure]
+├── gallery.html               [Photo gallery with lightbox]
+├── contact.html               [Contact info, form & Google Maps]
+├── admission.html             [Admission enquiry form]
+├── affiliations.html          [Regulatory body approvals]
+├── DOCUMENTATION.txt          [This documentation file]
+│
+├── css/
+│   ├── style.css              [Global styles, design tokens, typography]
+│   ├── components.css         [Reusable UI component styles]
+│   ├── responsive.css         [Media queries for all breakpoints]
+│   └── animations.css         [Keyframe animations & transitions]
+│
+├── js/
+│   ├── data.js                [Default data, localStorage CRUD helpers]
+│   ├── main.js                [Core: navbar, slider, ticker, stats, scroll]
+│   ├── gallery.js             [Gallery filtering, masonry, lightbox]
+│   └── forms.js               [Form validation, submission, modals]
+│
+├── admin/
+│   ├── index.html             [Admin login page]
+│   ├── dashboard.html         [Admin dashboard with stats]
+│   ├── notices.html           [Notice management (CRUD)]
+│   ├── gallery.html           [Gallery/media management]
+│   ├── leads.html             [Admission enquiry lead tracker]
+│   ├── admin.css              [Admin panel styles]
+│   └── admin.js               [Admin logic & data operations]
+│
+└── assets/
+    ├── images/                [All website images]
+    │   ├── hero1.jpg - hero4.jpg     [Hero slider backgrounds]
+    │   ├── campus1-4.jpg             [Campus photos]
+    │   ├── lab1-3.jpg                [Laboratory photos]
+    │   ├── clinical1-2.jpg           [Clinical training photos]
+    │   ├── event1-3.jpg              [Event photos]
+    │   ├── facility-1 to 8.jpg       [Facility images]
+    │   └── principal.jpg             [Principal's photo]
+    │
+    └── docs/                  [Downloadable PDF documents]
+
+TOTAL FILES: ~30 files
+TOTAL CSS FILES: 5 (4 frontend + 1 admin)
+TOTAL JS FILES: 5 (4 frontend + 1 admin)
+TOTAL HTML FILES: 14 (9 frontend + 5 admin)
+
+================================================================================
+  4. DESIGN SYSTEM REFERENCE
+================================================================================
+
+COLOR PALETTE:
+  Primary (Navy)      : #1B2A4A   - Headers, navbar, primary backgrounds
+  Primary Light       : #2D4A7A   - Hover states, secondary elements
+  Primary Dark        : #0D1B2A   - Footer, dark sections
+  Accent (Gold)       : #C9A84C   - CTAs, highlights, accent elements
+  Accent Light        : #D4BC6A   - Hover on gold elements
+  Accent Dark         : #A8893D   - Active state for gold elements
+  Teal                : #2A9D8F   - Secondary accent, gradient endpoints
+  Success             : #28A745   - Success messages, positive indicators
+  Danger              : #DC3545   - Errors, delete buttons, warnings
+  Warning             : #FFC107   - Caution messages, alert badges
+  White               : #FFFFFF   - Backgrounds, text on dark
+  Off-White           : #F8F9FA   - Section backgrounds, subtle contrast
+  Light Gray          : #E9ECEF   - Borders, dividers, input backgrounds
+  Gray                : #6C757D   - Secondary text, meta information
+  Dark                : #212529   - Body text, primary content
+
+TYPOGRAPHY:
+  Heading Font  : 'Playfair Display', Georgia, serif
+  Body Font     : 'Inter', -apple-system, BlinkMacSystemFont, sans-serif
+  
+  Font Sizes:
+    h1: 2.8rem (page titles)
+    h2: 2.2rem (section headings)
+    h3: 1.6rem (card titles, sub-sections)
+    h4: 1.3rem (footer headings, small sections)
+    h5: 1.1rem (labels)
+    h6: 1rem (small labels)
+    body: 1rem (16px base)
+    small: 0.875rem
+
+SPACING SCALE:
+  --space-1: 0.25rem (4px)    - Minimal spacing
+  --space-2: 0.5rem (8px)     - Tight spacing
+  --space-3: 1rem (16px)      - Standard spacing
+  --space-4: 1.5rem (24px)    - Comfortable spacing
+  --space-5: 3rem (48px)      - Section spacing
+
+SHADOW SYSTEM:
+  Small   : 0 2px 4px rgba(0,0,0,0.08)    - Cards at rest
+  Medium  : 0 4px 12px rgba(0,0,0,0.12)   - Navbar, elevated elements
+  Large   : 0 8px 24px rgba(0,0,0,0.16)   - Cards on hover, dropdowns
+  XL      : 0 12px 40px rgba(0,0,0,0.2)   - Modals, lightbox
+
+BORDER RADIUS:
+  Small : 6px     - Buttons, inputs
+  Medium: 10px    - Cards, containers
+  Large : 16px    - Large cards, sections
+  XL    : 24px    - Hero overlays, special elements
+
+================================================================================
+  5. PAGE-BY-PAGE FEATURE DOCUMENTATION
+================================================================================
+
+--- INDEX.HTML (Homepage) ---
+
+  The homepage serves as the primary landing page and contains the richest
+  content of any page. It is designed to immediately engage visitors with
+  visual appeal and route them to key information.
+
+  SECTIONS:
+  1. Top Utility Bar
+     - Click-to-call phone number (+91 681 234 5678)
+     - Click-to-email link (info@bhanjanursing.ac.in)
+     - Animated "ADMISSION OPEN 2026-27" button with glowing effect
+     - Links directly to admission.html
+
+  2. Sticky Navigation Bar
+     - Anchors to top after scrolling past 100px
+     - Institution logo/name with tagline
+     - Navigation links: Home, About Us (dropdown), Courses, Facilities, Gallery, Contact
+     - About Us dropdown: History, Vision & Mission, Principal's Message, Affiliations
+     - Mobile hamburger menu for screens < 768px
+     - "Apply Now" CTA button in navigation
+
+  3. Hero Image Slider
+     - Full-width carousel with 4 high-resolution slides
+     - Each slide: background image + overlay text + CTA buttons
+     - Auto-advances every 5 seconds
+     - Dot navigation (click to jump to specific slide)
+     - Arrow navigation (previous/next)
+     - Touch/swipe support on mobile devices
+     - Smooth fade transitions between slides
+
+  4. Announcement Ticker
+     - Horizontal scrolling news ribbon below hero
+     - Pulls content from notices marked "showOnTicker: true"
+     - Continuous CSS animation (no JavaScript needed for scroll)
+     - Gold background with white text for high visibility
+
+  5. Split-Column Section (65/35)
+     - LEFT (65%): Principal's welcome message, institutional history
+     - RIGHT (35%): Notice Board
+       * Fixed-height container with overflow scrolling
+       * Each notice shows: date, title, "NEW" badge if recent
+       * PDF download links where available
+       * Custom scrollbar styling
+
+  6. Course Highlights
+     - 3 cards for ANM, GNM, B.Sc. Nursing
+     - Each card: icon, course name, duration, brief description, "Learn More" link
+     - Hover effect: card lifts with shadow increase
+     - Links to respective course sections in courses.html
+
+  7. Why Choose Us (Statistics)
+     - Dark background (navy) section
+     - 4 animated counters: 500+ Students, 10+ Years, 50+ Faculty, 95% Placement
+     - Counter animation triggered by IntersectionObserver (runs once)
+     - Gold numbers on dark background for visual impact
+
+  8. Campus Glimpse
+     - 2x2 image grid preview of gallery
+     - Hover zoom effect on images
+     - "View Full Gallery" link to gallery.html
+
+  9. CTA Banner
+     - Full-width gradient (navy to teal)
+     - "Begin Your Nursing Career Today" headline
+     - "Apply Now" button linking to admission.html
+
+  10. Footer (shared across all pages)
+      - 4-column grid: About, Quick Links, Courses, Contact Info
+      - Social media icons (Facebook, Instagram, YouTube, WhatsApp)
+      - Regulatory approval mentions
+      - Copyright notice
+
+--- ABOUT.HTML ---
+
+  SECTIONS:
+  - Page Header with breadcrumb (Home > About Us)
+  - Institution History (founding, location in Bhanjanagar, Ganjam district)
+  - Vision & Mission cards with icons
+  - Core Values grid (Compassion, Excellence, Integrity, Innovation, Service, Teamwork)
+  - Timeline of milestones
+  - CTA section
+
+--- PRINCIPAL-MESSAGE.HTML ---
+
+  SECTIONS:
+  - Page Header
+  - Two-column layout: photo (left) + message (right)
+  - Pull-quote highlight of key philosophy statement
+  - Educational philosophy section
+  - Signature block with name and designation
+
+--- COURSES.HTML ---
+
+  SECTIONS:
+  - Page Header
+  - Tab navigation: B.Sc. Nursing | GNM | ANM
+  - Each tab pane contains:
+    * Course overview and description
+    * Duration, eligibility criteria, intake capacity
+    * Fee structure table
+    * Year-wise syllabus (accordion format)
+    * Career prospects after completion
+    * "Apply Now" CTA
+  - Anchor IDs: #bsc, #gnm, #anm (for direct linking)
+
+--- FACILITIES.HTML ---
+
+  SECTIONS:
+  - Page Header
+  - Grid of 8 facility cards:
+    1. Nursing Simulation Lab (icon: heartbeat)
+    2. Library & Reading Room (icon: book-open)
+    3. Computer Lab (icon: laptop)
+    4. Hostel & Accommodation (icon: building)
+    5. Cafeteria (icon: utensils)
+    6. Sports & Recreation (icon: volleyball)
+    7. Transportation (icon: bus)
+    8. Auditorium (icon: theater-masks)
+  - Each card: image, icon, title, description
+  - CTA section
+
+--- GALLERY.HTML ---
+
+  SECTIONS:
+  - Page Header
+  - Filter tabs: All | Campus | Laboratories | Clinical Postings | Cultural Events
+  - Masonry-style image grid
+  - Lightbox overlay (opens on image click):
+    * Full-resolution image display
+    * Caption text
+    * Previous/Next navigation arrows
+    * Close button (X)
+    * Keyboard navigation (Left/Right arrows, Escape to close)
+    * Body scroll lock when lightbox is open
+
+--- CONTACT.HTML ---
+
+  SECTIONS:
+  - Page Header
+  - 3 contact info cards (Phone, Email, Address) with icons
+  - Two-column layout:
+    * LEFT: Contact form (Name, Email, Phone, Subject, Message)
+    * RIGHT: Google Maps embed (Bhanjanagar, Ganjam, Odisha)
+  - Form validation on submission
+  - Success message display
+
+--- ADMISSION.HTML ---
+
+  SECTIONS:
+  - Page Header ("Admission Open 2026-27")
+  - Eligibility overview: 3 cards for ANM/GNM/B.Sc. requirements
+  - Admission Enquiry Form:
+    * Full Name (required, min 3 chars, letters + spaces only)
+    * Mobile Number (required, 10-digit Indian pattern)
+    * Email ID (required, valid email format)
+    * Course Selection (required, dropdown: B.Sc. / GNM / ANM)
+    * Permanent Address (required, min 10 chars)
+    * +2 Science Marks: Physics %, Chemistry %, Biology % (0-100)
+  - Real-time inline validation on blur and after first submit attempt
+  - Success modal with confirmation message on valid submission
+  - Data saved to localStorage for admin panel retrieval
+  - Important dates section
+
+--- AFFILIATIONS.HTML ---
+
+  SECTIONS:
+  - Page Header
+  - 3 regulatory body cards:
+    1. INC (Indian Nursing Council, New Delhi) - description + link
+    2. ONMC (Odisha Nurses & Midwives Council) - description + link
+    3. OUHS (Odisha University of Health Sciences, Bhubaneswar) - description + link
+  - Approval status section
+  - CTA section
+
+================================================================================
+  6. ADMIN PANEL (CMS) USER GUIDE
+================================================================================
+
+ACCESS URL: Open admin/index.html in your browser
+DEFAULT CREDENTIALS:
+  Username: admin
+  Password: bhanja2026
+
+SECURITY FEATURES:
+  - Password validated against hashed credentials
+  - Brute-force protection: 3 failed attempts = 5-minute lockout
+  - Session stored in sessionStorage (auto-logout on browser close)
+  - Auth check on every admin page (redirects to login if unauthenticated)
+
+--- DASHBOARD (admin/dashboard.html) ---
+
+  After login, you land on the dashboard showing:
+  - 4 summary stat cards:
+    * Total Notices (count of all notices)
+    * Total Gallery Items (count of gallery images)
+    * Total Enquiries (count of admission leads)
+    * New Enquiries (leads submitted today)
+  - Recent Notices (latest 5 notices)
+  - Recent Enquiries (latest 5 leads)
+  - Quick Action Buttons: Add Notice, Add Image, Export Leads
+
+--- NOTICE MANAGEMENT (admin/notices.html) ---
+
+  VIEWING NOTICES:
+  - Table showing all notices: ID, Title, Date, Ticker status, Actions
+  - Click column headers to sort
+
+  ADDING A NOTICE:
+  1. Click "Add New Notice" button
+  2. Fill in: Title, Body text, PDF URL (optional)
+  3. Toggle "Show on Ticker" to display in homepage announcement bar
+  4. Toggle "Mark as New" for the pulsing "NEW" badge on homepage
+  5. Click "Save Notice"
+
+  EDITING A NOTICE:
+  1. Click "Edit" icon next to the notice
+  2. Modify fields in the modal form
+  3. Click "Save Notice"
+
+  DELETING A NOTICE:
+  1. Click "Delete" icon next to the notice
+  2. Confirm in the confirmation modal
+  3. Notice is permanently removed
+
+  NOTE: Changes to notices immediately reflect on the homepage notice board
+  and announcement ticker the next time a visitor loads the page.
+
+--- GALLERY MANAGEMENT (admin/gallery.html) ---
+
+  VIEWING GALLERY:
+  - Grid view showing all images with captions and category badges
+
+  ADDING AN IMAGE:
+  1. Click "Add Image" button
+  2. Enter Image URL/path (relative to site root, e.g., "assets/images/new.jpg")
+  3. Enter Caption text
+  4. Select Category: Campus, Laboratories, Clinical Postings, Cultural Events
+  5. Click "Save"
+
+  DELETING AN IMAGE:
+  1. Click "Delete" icon on the image card
+  2. Confirm deletion
+  
+  NOTE: To add actual image files, upload them to the assets/images/ directory
+  on your web server, then add the path through this admin interface.
+
+--- LEAD MANAGEMENT (admin/leads.html) ---
+
+  VIEWING LEADS:
+  - Full table: Name, Mobile, Email, Course, PCB%, Address, Date
+  - Leads are automatically populated from admission form submissions
+
+  SEARCHING:
+  - Type in the search box to filter leads by name, email, or phone
+
+  DATE FILTERING:
+  - Set "From" and "To" dates to filter leads by submission date
+
+  EXPORTING:
+  - CSV Export: Click "Export CSV" to download all visible leads as .csv
+  - Excel Export: Click "Export Excel" to download as .xls compatible file
+
+  DELETING A LEAD:
+  - Click the delete icon next to a lead
+  - Confirm deletion
+
+================================================================================
+  7. DATA STORAGE & MANAGEMENT
+================================================================================
+
+All data is stored in the browser's localStorage. This means:
+- Data persists across page reloads and browser restarts
+- Data is specific to the browser/device being used
+- Data is NOT shared across different browsers or devices
+- Clearing browser data will erase all stored information
+
+LOCALSTORAGE KEYS:
+
+  Key: 'bcn_notices'
+  Type: JSON Array of Objects
+  Structure: [{
+    id: Number,
+    title: String,
+    body: String,
+    date: String (YYYY-MM-DD),
+    isNew: Boolean,
+    showOnTicker: Boolean,
+    pdfUrl: String (URL or empty)
+  }]
+
+  Key: 'bcn_gallery'
+  Type: JSON Array of Objects
+  Structure: [{
+    id: Number,
+    src: String (image path),
+    caption: String,
+    category: String ("campus"|"labs"|"clinical"|"events")
+  }]
+
+  Key: 'bcn_leads'
+  Type: JSON Array of Objects
+  Structure: [{
+    id: Number,
+    name: String,
+    mobile: String,
+    email: String,
+    course: String,
+    address: String,
+    physics: Number,
+    chemistry: Number,
+    biology: Number,
+    date: String (YYYY-MM-DD)
+  }]
+
+  Key: 'bcn_login_attempts'
+  Type: JSON Object
+  Structure: {
+    count: Number,
+    lockoutUntil: Number (timestamp) or null
+  }
+
+  Key (sessionStorage): 'bcn_admin_session'
+  Type: String
+  Value: Session token (any truthy value indicates logged-in state)
+
+DEFAULT DATA:
+  On first visit, if localStorage is empty, the system seeds:
+  - 6 sample notices with realistic content
+  - 12 sample gallery items across 4 categories
+  - 0 leads (populated by admission form submissions)
+
+FOR PRODUCTION DEPLOYMENT:
+  Replace localStorage operations with API calls to a backend server:
+  - PHP + MySQL: Create REST API endpoints for CRUD operations
+  - Node.js + PostgreSQL: Use Express.js with Sequelize ORM
+  - The frontend admin interface remains identical; only the data layer changes
+
+================================================================================
+  8. RESPONSIVE DESIGN BREAKPOINTS
+================================================================================
+
+  BREAKPOINT          WIDTH           DEVICES
+  Desktop Large       > 1200px        Large monitors, wide screens
+  Desktop             1024-1200px     Standard desktop monitors
+  Tablet              768-1024px      iPads, tablets, small laptops
+  Mobile Large        480-768px       Large phones, small tablets
+  Mobile              < 480px         Standard smartphones
+
+  KEY RESPONSIVE BEHAVIORS:
+
+  At 768px and below:
+  - Navigation collapses to hamburger menu
+  - Hero slider reduces height (350px)
+  - Split section stacks vertically (left above right)
+  - Gallery grid: 2 columns
+  - Footer grid: single column
+  - Stats section wraps to 2x2 grid
+  - Form fields go full width
+  - Admin sidebar collapses (toggleable)
+
+  At 480px and below:
+  - Hero slider: 250px height
+  - Gallery grid: single column
+  - Heading sizes reduced
+  - Padding reduced throughout
+  - Stats: 1 column
+  - Course cards: 1 column
+
+================================================================================
+  9. SEO IMPLEMENTATION
+================================================================================
+
+  Each page implements the following SEO best practices:
+
+  TITLE TAGS:
+  - Homepage: "Bhanja College of Nursing - ANM, GNM, B.Sc. Nursing | Bhanjanagar, Odisha"
+  - About: "About Us - Bhanja College of Nursing | History, Vision & Mission"
+  - Courses: "Courses Offered - B.Sc. Nursing, GNM, ANM | Bhanja College of Nursing"
+  - (Each page has a unique, descriptive title)
+
+  META DESCRIPTIONS:
+  - Each page has a unique meta description (150-160 characters)
+  - Contains relevant keywords naturally
+
+  HEADING HIERARCHY:
+  - Single H1 per page (page title)
+  - H2 for section headings
+  - H3 for sub-sections and card titles
+  - Proper nesting (no skipped levels)
+
+  SEMANTIC HTML5:
+  - <header> for top bar and navigation
+  - <nav> for navigation menus
+  - <main> for primary content
+  - <section> for content sections with id attributes
+  - <article> for standalone content blocks
+  - <footer> for footer content
+  - <aside> for notice board sidebar
+
+  STRUCTURED DATA:
+  - All images have descriptive alt text
+  - Links have meaningful anchor text
+  - Form labels properly associated with inputs
+
+  PERFORMANCE:
+  - Minimal CSS (no framework bloat)
+  - Vanilla JS (no library overhead)
+  - Font Awesome loaded via CDN with browser caching
+  - Images optimized for web delivery
+
+================================================================================
+  10. DEPLOYMENT INSTRUCTIONS
+================================================================================
+
+  OPTION A: SIMPLE STATIC HOSTING (Recommended for Demo/Testing)
+
+  1. Upload entire "Nursing College" folder to any web server
+  2. Point the domain to the folder containing index.html
+  3. Ensure all files maintain their relative paths
+  4. No server-side configuration needed
+
+  OPTION B: SHARED HOSTING (cPanel-based)
+
+  1. Log into your hosting cPanel
+  2. Navigate to File Manager > public_html
+  3. Upload all files and folders from "Nursing College" directory
+  4. Ensure file permissions: 644 for files, 755 for directories
+  5. Set up SSL certificate (most hosts offer free Let's Encrypt)
+  6. Configure .htaccess for HTTPS redirect:
+     RewriteEngine On
+     RewriteCond %{HTTPS} off
+     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  OPTION C: VPS/DEDICATED SERVER
+
+  1. Install web server (Apache or Nginx)
+  2. Configure virtual host pointing to the project directory
+  3. Install SSL certificate (certbot for Let's Encrypt)
+  4. Set up proper file permissions
+  5. Configure server caching headers for static assets
+
+  DOMAIN SETUP:
+  - Register domain (e.g., bhanjacollegeofnursing.ac.in or .com)
+  - Point A record to server IP
+  - Wait for DNS propagation (24-48 hours)
+
+  POST-DEPLOYMENT CHECKLIST:
+  [ ] All pages load correctly
+  [ ] Images display properly
+  [ ] Forms submit and show success messages
+  [ ] Admin panel login works
+  [ ] HTTPS is active (padlock in browser)
+  [ ] Mobile responsiveness verified
+  [ ] Contact information is accurate
+  [ ] Google Maps embed shows correct location
+
+================================================================================
+  11. MAINTENANCE GUIDE
+================================================================================
+
+  REGULAR TASKS:
+
+  Weekly:
+  - Check admin panel for new admission enquiries
+  - Update notice board with current announcements
+  - Export leads to spreadsheet for record-keeping
+
+  Monthly:
+  - Review and update gallery with recent photos
+  - Check all links for broken URLs
+  - Verify regulatory body links still work
+  - Review contact information accuracy
+
+  Annually:
+  - Update admission year in the "ADMISSION OPEN" banner
+  - Refresh course fee structure if changed
+  - Update Principal's Message if needed
+  - Update statistics (students trained, placement rate, etc.)
+  - Renew SSL certificate (if not auto-renewing)
+  - Renew domain registration
+
+  UPDATING CONTENT:
+
+  Notices & Announcements:
+  → Use Admin Panel > Notices to add/edit/delete
+
+  Gallery Photos:
+  → Upload new images to assets/images/ on server
+  → Use Admin Panel > Gallery to add entries with correct paths
+
+  Course Information:
+  → Edit courses.html directly (or hire developer)
+  → Update fee tables, eligibility criteria, syllabus
+
+  Contact Information:
+  → Update phone/email in: top bar, contact page, footer
+  → Files to edit: index.html (header/footer), contact.html, about.html
+
+  Admission Year:
+  → Search and replace "2026-27" across all HTML files
+  → Update the admission button text in the top bar
+
+================================================================================
+  12. SECURITY CONSIDERATIONS
+================================================================================
+
+  CURRENT IMPLEMENTATION (Demo Level):
+  - Admin credentials stored client-side (suitable for demo only)
+  - Data in localStorage (accessible via browser dev tools)
+  - No server-side validation (client-side only)
+
+  FOR PRODUCTION DEPLOYMENT:
+
+  Must Implement:
+  1. Server-side authentication (PHP sessions or JWT)
+  2. Password hashing (bcrypt or Argon2)
+  3. CSRF token protection on all forms
+  4. Input sanitization on server-side
+  5. SQL injection prevention (parameterized queries)
+  6. XSS prevention (output encoding)
+  7. Rate limiting on form submissions
+  8. CAPTCHA on admission and contact forms
+  9. File upload validation (type, size, virus scan)
+  10. HTTPS enforced via server configuration
+
+  Recommended:
+  - Regular security audits
+  - Web Application Firewall (WAF)
+  - Regular CMS credential rotation
+  - Server access logging and monitoring
+  - Automated backup system (daily database, weekly full)
+
+================================================================================
+  13. BROWSER COMPATIBILITY
+================================================================================
+
+  TESTED & SUPPORTED:
+  - Google Chrome (v90+)
+  - Mozilla Firefox (v88+)
+  - Microsoft Edge (v90+)
+  - Safari (v14+)
+  - Opera (v76+)
+  - Samsung Internet (v14+)
+
+  MOBILE BROWSERS:
+  - Chrome Mobile (Android)
+  - Safari Mobile (iOS)
+  - Firefox Mobile
+  - Samsung Internet
+
+  CSS FEATURES USED:
+  - Custom Properties (CSS Variables): All modern browsers
+  - Flexbox: All modern browsers
+  - CSS Grid: All modern browsers
+  - CSS Animations: All modern browsers
+  - Scroll Behavior Smooth: All except older Safari
+  - IntersectionObserver: All modern browsers
+
+  GRACEFUL DEGRADATION:
+  - Site functions without JavaScript (navigation, content visible)
+  - Animations are enhancements, not requirements
+  - Form submission works without JS (basic HTML validation)
+
+================================================================================
+  14. FUTURE ENHANCEMENT ROADMAP
+================================================================================
+
+  PHASE 1 (Near-term):
+  - [ ] Add server-side backend (PHP/MySQL or Node.js/PostgreSQL)
+  - [ ] Implement proper authentication with database
+  - [ ] Add file upload capability in admin panel
+  - [ ] Integrate CAPTCHA on public forms
+  - [ ] Add email notifications for new admission enquiries
+
+  PHASE 2 (Mid-term):
+  - [ ] Student portal (login, view results, download hall tickets)
+  - [ ] Online admission application with payment gateway
+  - [ ] Faculty profiles page
+  - [ ] Alumni section with testimonials
+  - [ ] Blog/News section for institutional updates
+  - [ ] Event calendar with upcoming dates
+
+  PHASE 3 (Long-term):
+  - [ ] Multi-language support (English + Odia)
+  - [ ] Progressive Web App (PWA) for offline access
+  - [ ] Integration with government admission portals
+  - [ ] Learning Management System (LMS) for students
+  - [ ] Virtual campus tour (360-degree photos)
+  - [ ] Chatbot for admission queries
+  - [ ] Analytics dashboard (Google Analytics integration)
+  - [ ] Automated exam result publication system
+
+================================================================================
+  15. TROUBLESHOOTING
+================================================================================
+
+  ISSUE: Images not displaying
+  SOLUTION: Check that all image files exist in assets/images/ directory.
+  Verify file names match exactly (case-sensitive on Linux servers).
+
+  ISSUE: Admin panel shows blank data
+  SOLUTION: Clear localStorage and reload. Data will be reseeded with defaults.
+  In browser console, type: localStorage.clear() then refresh the page.
+
+  ISSUE: Navigation not working on mobile
+  SOLUTION: Ensure main.js is loaded after the HTML. Check browser console
+  for JavaScript errors. Verify hamburger button has id="hamburger".
+
+  ISSUE: Announcement ticker not scrolling
+  SOLUTION: Check that notices exist with showOnTicker: true in localStorage.
+  Verify animations.css is loaded. Check for CSS conflicts.
+
+  ISSUE: Form submission not saving data
+  SOLUTION: Check browser console for errors. Verify forms.js and data.js are
+  both loaded. Ensure localStorage is not disabled or full.
+
+  ISSUE: Admin login not working
+  SOLUTION: Default credentials are admin / bhanja2026. After 3 failed
+  attempts, wait 5 minutes for lockout to expire. To reset lockout:
+  In browser console: localStorage.removeItem('bcn_login_attempts')
+
+  ISSUE: Gallery lightbox not opening
+  SOLUTION: Verify gallery.js is loaded on gallery.html. Check that lightbox
+  overlay HTML markup exists in the page. Check console for errors.
+
+  ISSUE: Statistics counter not animating
+  SOLUTION: Scroll down to the stats section. Animation triggers only once
+  on first view. Verify IntersectionObserver is supported in your browser.
+
+  ISSUE: CSS styles not loading
+  SOLUTION: Check file paths in <link> tags. Ensure css/ directory exists
+  with all 4 CSS files. Clear browser cache (Ctrl+Shift+R).
+
+  ISSUE: Responsive layout broken
+  SOLUTION: Verify responsive.css is loaded AFTER components.css. Check
+  viewport meta tag exists: <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+================================================================================
+                         END OF DOCUMENTATION
+================================================================================
+
+  For technical support or custom modifications, contact the developer.
+  
+  License: This website was custom-built for Bhanja College of Nursing,
+  Bhanjanagar, Odisha. All design and code are proprietary.
+
+================================================================================

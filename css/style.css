@@ -1,0 +1,663 @@
+/* ============================================================
+   BHANJA COLLEGE OF NURSING — Global Styles
+   style.css — Reset, Design Tokens, Typography, Layout, Utilities
+   ============================================================ */
+
+/* ── Google Fonts ─────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
+/* ── Design Tokens (CSS Custom Properties) ────────────────── */
+:root {
+  /* Primary palette */
+  --primary:        #1B2A4A;
+  --primary-light:  #2D4A7A;
+  --primary-dark:   #0D1B2A;
+
+  /* Accent — warm gold */
+  --accent:         #C9A84C;
+  --accent-light:   #D4BC6A;
+  --accent-dark:    #A8893D;
+
+  /* Teal */
+  --teal:           #2A9D8F;
+  --teal-light:     #3DB8A9;
+
+  /* Semantic */
+  --success:        #28A745;
+  --danger:         #DC3545;
+  --warning:        #FFC107;
+
+  /* Neutrals */
+  --white:          #FFFFFF;
+  --off-white:      #F8F9FA;
+  --light-gray:     #E9ECEF;
+  --gray:           #6C757D;
+  --dark:           #212529;
+
+  /* Typography */
+  --font-heading:   'Playfair Display', Georgia, serif;
+  --font-body:      'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Shadows */
+  --shadow-sm:      0 2px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md:      0 4px 12px rgba(0, 0, 0, 0.12);
+  --shadow-lg:      0 8px 24px rgba(0, 0, 0, 0.16);
+  --shadow-xl:      0 12px 40px rgba(0, 0, 0, 0.2);
+
+  /* Radii */
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      16px;
+  --radius-xl:      24px;
+
+  /* Transitions */
+  --transition:     all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── CSS Reset ────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: var(--dark);
+  background-color: var(--white);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Remove default list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Reset anchors */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+/* Reset images */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Reset form elements */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── Base Typography ──────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--primary-dark);
+  margin-bottom: 0.5em;
+  letter-spacing: -0.01em;
+}
+
+h1 {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1.15;
+}
+
+h2 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  line-height: 1.2;
+}
+
+h3 {
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+}
+
+h5 {
+  font-size: 1.125rem;
+}
+
+h6 {
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+p {
+  margin-bottom: 1rem;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+strong, b {
+  font-weight: 700;
+}
+
+em, i {
+  font-style: italic;
+}
+
+small {
+  font-size: 0.875rem;
+}
+
+blockquote {
+  border-left: 4px solid var(--accent);
+  padding: 1rem 1.5rem;
+  margin: 1.5rem 0;
+  background: var(--off-white);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  font-style: italic;
+  color: var(--primary);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: var(--light-gray);
+  margin: 2rem 0;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+::-moz-selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+/* ── Layout ───────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container-sm {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container-lg {
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.section-padding {
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
+
+.section-padding-sm {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.section-padding-lg {
+  padding-top: 120px;
+  padding-bottom: 120px;
+}
+
+/* ── Section Titles ───────────────────────────────────────── */
+.section-title {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.section-title h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 16px;
+  margin-bottom: 12px;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.section-title p {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.05rem;
+  color: var(--gray);
+}
+
+.section-title-left {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.section-title-left h2::after {
+  left: 0;
+  transform: none;
+}
+
+/* ── Grid System (Flexbox) ────────────────────────────────── */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.row > * {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+/* Column classes */
+.col     { flex: 1 0 0%; }
+.col-1   { flex: 0 0 8.333%;  max-width: 8.333%;  }
+.col-2   { flex: 0 0 16.666%; max-width: 16.666%; }
+.col-3   { flex: 0 0 25%;     max-width: 25%;     }
+.col-4   { flex: 0 0 33.333%; max-width: 33.333%; }
+.col-5   { flex: 0 0 41.666%; max-width: 41.666%; }
+.col-6   { flex: 0 0 50%;     max-width: 50%;     }
+.col-7   { flex: 0 0 58.333%; max-width: 58.333%; }
+.col-8   { flex: 0 0 66.666%; max-width: 66.666%; }
+.col-9   { flex: 0 0 75%;     max-width: 75%;     }
+.col-10  { flex: 0 0 83.333%; max-width: 83.333%; }
+.col-11  { flex: 0 0 91.666%; max-width: 91.666%; }
+.col-12  { flex: 0 0 100%;    max-width: 100%;    }
+
+/* Auto column */
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: 100%;
+}
+
+/* ── Flexbox Utilities ────────────────────────────────────── */
+.d-flex           { display: flex; }
+.d-inline-flex    { display: inline-flex; }
+.d-block          { display: block; }
+.d-inline-block   { display: inline-block; }
+.d-none           { display: none; }
+.d-grid           { display: grid; }
+
+.flex-row         { flex-direction: row; }
+.flex-column      { flex-direction: column; }
+.flex-wrap        { flex-wrap: wrap; }
+.flex-nowrap      { flex-wrap: nowrap; }
+
+.justify-start    { justify-content: flex-start; }
+.justify-center   { justify-content: center; }
+.justify-end      { justify-content: flex-end; }
+.justify-between  { justify-content: space-between; }
+.justify-around   { justify-content: space-around; }
+.justify-evenly   { justify-content: space-evenly; }
+
+.align-start      { align-items: flex-start; }
+.align-center     { align-items: center; }
+.align-end        { align-items: flex-end; }
+.align-stretch    { align-items: stretch; }
+.align-baseline   { align-items: baseline; }
+
+.align-self-start   { align-self: flex-start; }
+.align-self-center  { align-self: center; }
+.align-self-end     { align-self: flex-end; }
+
+.flex-grow-1      { flex-grow: 1; }
+.flex-shrink-0    { flex-shrink: 0; }
+
+/* Gap */
+.gap-1  { gap: 0.25rem; }
+.gap-2  { gap: 0.5rem; }
+.gap-3  { gap: 1rem; }
+.gap-4  { gap: 1.5rem; }
+.gap-5  { gap: 2rem; }
+.gap-6  { gap: 3rem; }
+
+/* ── Text Utilities ───────────────────────────────────────── */
+.text-center    { text-align: center; }
+.text-left      { text-align: left; }
+.text-right     { text-align: right; }
+.text-justify   { text-align: justify; }
+
+.text-uppercase { text-transform: uppercase; }
+.text-lowercase { text-transform: lowercase; }
+.text-capitalize{ text-transform: capitalize; }
+
+.text-primary   { color: var(--primary) !important; }
+.text-accent    { color: var(--accent) !important; }
+.text-teal      { color: var(--teal) !important; }
+.text-white     { color: var(--white) !important; }
+.text-dark      { color: var(--dark) !important; }
+.text-gray      { color: var(--gray) !important; }
+.text-success   { color: var(--success) !important; }
+.text-danger    { color: var(--danger) !important; }
+.text-warning   { color: var(--warning) !important; }
+
+.fw-300         { font-weight: 300; }
+.fw-400         { font-weight: 400; }
+.fw-500         { font-weight: 500; }
+.fw-600         { font-weight: 600; }
+.fw-700         { font-weight: 700; }
+
+.fs-sm          { font-size: 0.875rem; }
+.fs-base        { font-size: 1rem; }
+.fs-md          { font-size: 1.125rem; }
+.fs-lg          { font-size: 1.25rem; }
+.fs-xl          { font-size: 1.5rem; }
+
+.lh-1           { line-height: 1; }
+.lh-sm          { line-height: 1.25; }
+.lh-base        { line-height: 1.5; }
+.lh-lg          { line-height: 1.8; }
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-nowrap    { white-space: nowrap; }
+
+/* ── Background Utilities ─────────────────────────────────── */
+.bg-primary     { background-color: var(--primary) !important; }
+.bg-primary-dark{ background-color: var(--primary-dark) !important; }
+.bg-accent      { background-color: var(--accent) !important; }
+.bg-teal        { background-color: var(--teal) !important; }
+.bg-white       { background-color: var(--white) !important; }
+.bg-off-white   { background-color: var(--off-white) !important; }
+.bg-light-gray  { background-color: var(--light-gray) !important; }
+.bg-dark        { background-color: var(--dark) !important; }
+
+/* ── Spacing Utilities ────────────────────────────────────── */
+/* Margin top */
+.mt-0 { margin-top: 0 !important; }
+.mt-1 { margin-top: 0.25rem !important; }
+.mt-2 { margin-top: 0.5rem !important; }
+.mt-3 { margin-top: 1rem !important; }
+.mt-4 { margin-top: 1.5rem !important; }
+.mt-5 { margin-top: 3rem !important; }
+
+/* Margin bottom */
+.mb-0 { margin-bottom: 0 !important; }
+.mb-1 { margin-bottom: 0.25rem !important; }
+.mb-2 { margin-bottom: 0.5rem !important; }
+.mb-3 { margin-bottom: 1rem !important; }
+.mb-4 { margin-bottom: 1.5rem !important; }
+.mb-5 { margin-bottom: 3rem !important; }
+
+/* Margin left */
+.ml-0 { margin-left: 0 !important; }
+.ml-1 { margin-left: 0.25rem !important; }
+.ml-2 { margin-left: 0.5rem !important; }
+.ml-3 { margin-left: 1rem !important; }
+.ml-4 { margin-left: 1.5rem !important; }
+.ml-5 { margin-left: 3rem !important; }
+
+/* Margin right */
+.mr-0 { margin-right: 0 !important; }
+.mr-1 { margin-right: 0.25rem !important; }
+.mr-2 { margin-right: 0.5rem !important; }
+.mr-3 { margin-right: 1rem !important; }
+.mr-4 { margin-right: 1.5rem !important; }
+.mr-5 { margin-right: 3rem !important; }
+
+/* Margin x-axis */
+.mx-0 { margin-left: 0 !important; margin-right: 0 !important; }
+.mx-1 { margin-left: 0.25rem !important; margin-right: 0.25rem !important; }
+.mx-2 { margin-left: 0.5rem !important; margin-right: 0.5rem !important; }
+.mx-3 { margin-left: 1rem !important; margin-right: 1rem !important; }
+.mx-4 { margin-left: 1.5rem !important; margin-right: 1.5rem !important; }
+.mx-5 { margin-left: 3rem !important; margin-right: 3rem !important; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+
+/* Margin y-axis */
+.my-0 { margin-top: 0 !important; margin-bottom: 0 !important; }
+.my-1 { margin-top: 0.25rem !important; margin-bottom: 0.25rem !important; }
+.my-2 { margin-top: 0.5rem !important; margin-bottom: 0.5rem !important; }
+.my-3 { margin-top: 1rem !important; margin-bottom: 1rem !important; }
+.my-4 { margin-top: 1.5rem !important; margin-bottom: 1.5rem !important; }
+.my-5 { margin-top: 3rem !important; margin-bottom: 3rem !important; }
+
+/* Padding top */
+.pt-0 { padding-top: 0 !important; }
+.pt-1 { padding-top: 0.25rem !important; }
+.pt-2 { padding-top: 0.5rem !important; }
+.pt-3 { padding-top: 1rem !important; }
+.pt-4 { padding-top: 1.5rem !important; }
+.pt-5 { padding-top: 3rem !important; }
+
+/* Padding bottom */
+.pb-0 { padding-bottom: 0 !important; }
+.pb-1 { padding-bottom: 0.25rem !important; }
+.pb-2 { padding-bottom: 0.5rem !important; }
+.pb-3 { padding-bottom: 1rem !important; }
+.pb-4 { padding-bottom: 1.5rem !important; }
+.pb-5 { padding-bottom: 3rem !important; }
+
+/* Padding left */
+.pl-0 { padding-left: 0 !important; }
+.pl-1 { padding-left: 0.25rem !important; }
+.pl-2 { padding-left: 0.5rem !important; }
+.pl-3 { padding-left: 1rem !important; }
+.pl-4 { padding-left: 1.5rem !important; }
+.pl-5 { padding-left: 3rem !important; }
+
+/* Padding right */
+.pr-0 { padding-right: 0 !important; }
+.pr-1 { padding-right: 0.25rem !important; }
+.pr-2 { padding-right: 0.5rem !important; }
+.pr-3 { padding-right: 1rem !important; }
+.pr-4 { padding-right: 1.5rem !important; }
+.pr-5 { padding-right: 3rem !important; }
+
+/* Padding x-axis */
+.px-0 { padding-left: 0 !important; padding-right: 0 !important; }
+.px-1 { padding-left: 0.25rem !important; padding-right: 0.25rem !important; }
+.px-2 { padding-left: 0.5rem !important; padding-right: 0.5rem !important; }
+.px-3 { padding-left: 1rem !important; padding-right: 1rem !important; }
+.px-4 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+.px-5 { padding-left: 3rem !important; padding-right: 3rem !important; }
+
+/* Padding y-axis */
+.py-0 { padding-top: 0 !important; padding-bottom: 0 !important; }
+.py-1 { padding-top: 0.25rem !important; padding-bottom: 0.25rem !important; }
+.py-2 { padding-top: 0.5rem !important; padding-bottom: 0.5rem !important; }
+.py-3 { padding-top: 1rem !important; padding-bottom: 1rem !important; }
+.py-4 { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
+.py-5 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+
+/* Padding all */
+.p-0 { padding: 0 !important; }
+.p-1 { padding: 0.25rem !important; }
+.p-2 { padding: 0.5rem !important; }
+.p-3 { padding: 1rem !important; }
+.p-4 { padding: 1.5rem !important; }
+.p-5 { padding: 3rem !important; }
+
+/* Margin all */
+.m-0 { margin: 0 !important; }
+.m-1 { margin: 0.25rem !important; }
+.m-2 { margin: 0.5rem !important; }
+.m-3 { margin: 1rem !important; }
+.m-4 { margin: 1.5rem !important; }
+.m-5 { margin: 3rem !important; }
+
+/* ── Sizing Utilities ─────────────────────────────────────── */
+.w-25   { width: 25% !important; }
+.w-50   { width: 50% !important; }
+.w-75   { width: 75% !important; }
+.w-100  { width: 100% !important; }
+.w-auto { width: auto !important; }
+
+.h-100  { height: 100% !important; }
+.h-auto { height: auto !important; }
+
+.min-vh-100 { min-height: 100vh; }
+
+/* ── Border Utilities ─────────────────────────────────────── */
+.rounded      { border-radius: var(--radius-md) !important; }
+.rounded-sm   { border-radius: var(--radius-sm) !important; }
+.rounded-lg   { border-radius: var(--radius-lg) !important; }
+.rounded-xl   { border-radius: var(--radius-xl) !important; }
+.rounded-full { border-radius: 50% !important; }
+.rounded-pill { border-radius: 100px !important; }
+.rounded-0    { border-radius: 0 !important; }
+
+.border        { border: 1px solid var(--light-gray); }
+.border-top    { border-top: 1px solid var(--light-gray); }
+.border-bottom { border-bottom: 1px solid var(--light-gray); }
+
+/* ── Shadow Utilities ─────────────────────────────────────── */
+.shadow-sm  { box-shadow: var(--shadow-sm) !important; }
+.shadow-md  { box-shadow: var(--shadow-md) !important; }
+.shadow-lg  { box-shadow: var(--shadow-lg) !important; }
+.shadow-xl  { box-shadow: var(--shadow-xl) !important; }
+.shadow-none{ box-shadow: none !important; }
+
+/* ── Position Utilities ───────────────────────────────────── */
+.position-relative { position: relative; }
+.position-absolute { position: absolute; }
+.position-fixed    { position: fixed; }
+.position-sticky   { position: sticky; }
+
+.top-0    { top: 0; }
+.bottom-0 { bottom: 0; }
+.left-0   { left: 0; }
+.right-0  { right: 0; }
+
+/* ── Overflow Utilities ───────────────────────────────────── */
+.overflow-hidden  { overflow: hidden; }
+.overflow-auto    { overflow: auto; }
+.overflow-visible { overflow: visible; }
+
+/* ── Visibility ───────────────────────────────────────────── */
+.visible   { visibility: visible; }
+.invisible { visibility: hidden; }
+
+/* ── Miscellaneous Utilities ──────────────────────────────── */
+.cursor-pointer { cursor: pointer; }
+.user-select-none { user-select: none; }
+.list-unstyled { list-style: none; padding: 0; margin: 0; }
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Custom scrollbar for the whole page */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--off-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
